@@ -34,7 +34,7 @@ func main() {
 			}
 		}
 	}()
-
+	panic("test")
 	// Add a path.
 	err = watcher.Add("./test")
 	if err != nil {
