@@ -49,39 +49,39 @@ func (mr *MockFileServiceMockRecorder) Save(c, fileName, file interface{}) *gomo
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockFileService)(nil).Save), c, fileName, file)
 }
 
-// MockNotifierService is a mock of NotifierService interface.
-type MockNotifierService struct {
+// MockEventsService is a mock of EventsService interface.
+type MockEventsService struct {
 	ctrl     *gomock.Controller
-	recorder *MockNotifierServiceMockRecorder
+	recorder *MockEventsServiceMockRecorder
 }
 
-// MockNotifierServiceMockRecorder is the mock recorder for MockNotifierService.
-type MockNotifierServiceMockRecorder struct {
-	mock *MockNotifierService
+// MockEventsServiceMockRecorder is the mock recorder for MockEventsService.
+type MockEventsServiceMockRecorder struct {
+	mock *MockEventsService
 }
 
-// NewMockNotifierService creates a new mock instance.
-func NewMockNotifierService(ctrl *gomock.Controller) *MockNotifierService {
-	mock := &MockNotifierService{ctrl: ctrl}
-	mock.recorder = &MockNotifierServiceMockRecorder{mock}
+// NewMockEventsService creates a new mock instance.
+func NewMockEventsService(ctrl *gomock.Controller) *MockEventsService {
+	mock := &MockEventsService{ctrl: ctrl}
+	mock.recorder = &MockEventsServiceMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockNotifierService) EXPECT() *MockNotifierServiceMockRecorder {
+func (m *MockEventsService) EXPECT() *MockEventsServiceMockRecorder {
 	return m.recorder
 }
 
-// Notify mocks base method.
-func (m *MockNotifierService) Notify(arg0 storage.Event) error {
+// Push mocks base method.
+func (m *MockEventsService) Push(arg0 storage.Event) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Notify", arg0)
+	ret := m.ctrl.Call(m, "Push", arg0)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Notify indicates an expected call of Notify.
-func (mr *MockNotifierServiceMockRecorder) Notify(arg0 interface{}) *gomock.Call {
+// Push indicates an expected call of Push.
+func (mr *MockEventsServiceMockRecorder) Push(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Notify", reflect.TypeOf((*MockNotifierService)(nil).Notify), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Push", reflect.TypeOf((*MockEventsService)(nil).Push), arg0)
 }

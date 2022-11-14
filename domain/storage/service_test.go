@@ -16,15 +16,15 @@ func TestService_Save(t *testing.T) {
 	defer ctrl.Finish()
 
 	fs := mocks.NewMockFileService(ctrl)
-	ns := mocks.NewMockNotifierService(ctrl)
+	es := mocks.NewMockEventsService(ctrl)
 
-	s := storage.NewService(fs, ns)
+	s := storage.NewService(fs, es)
 
 	file := bytes.NewReader([]byte("test"))
 
 	t.Run("success", func(t *testing.T) {
 		fs.EXPECT().Save(storage.CategoryVideo, gomock.Any(), file).Return(nil)
-		ns.EXPECT().Notify(gomock.Any()).Return(nil)
+		es.EXPECT().Push(gomock.Any()).Return(nil)
 
 		err := s.Save(storage.CategoryVideo, file)
 		require.NoError(t, err)
@@ -41,7 +41,7 @@ func TestService_Save(t *testing.T) {
 	t.Run("notifService error", func(t *testing.T) {
 		expectedError := errors.New("error")
 		fs.EXPECT().Save(storage.CategoryVideo, gomock.Any(), file).Return(nil)
-		ns.EXPECT().Notify(gomock.Any()).Return(expectedError)
+		es.EXPECT().Push(gomock.Any()).Return(expectedError)
 
 		err := s.Save(storage.CategoryVideo, file)
 		require.ErrorIs(t, err, expectedError)
@@ -49,7 +49,7 @@ func TestService_Save(t *testing.T) {
 
 	t.Run("notified with not nil event", func(t *testing.T) {
 		fs.EXPECT().Save(storage.CategoryVideo, gomock.Any(), file).Return(nil)
-		ns.EXPECT().Notify(gomock.Not(nil)).Return(nil)
+		es.EXPECT().Push(gomock.Not(nil)).Return(nil)
 
 		err := s.Save(storage.CategoryVideo, file)
 		require.NoError(t, err)
