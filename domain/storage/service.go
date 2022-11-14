@@ -16,6 +16,10 @@ type EventsService interface {
 	Push(Event) error
 }
 
+type Service interface {
+	Save(c FileCategory, file io.Reader) error
+}
+
 type service struct {
 	fs FileService
 	es EventsService

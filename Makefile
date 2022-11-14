@@ -1,7 +1,7 @@
 BINARY_NAME=storage
 
 build:
-	go build -o ${BINARY_NAME} main.go
+	go build -o ${BINARY_NAME} cmd/main.go
 
 run:
 	./${BINARY_NAME}
@@ -10,9 +10,7 @@ build_and_run: build run
 
 clean:
 	go clean
-	rm ${BINARY_NAME}-darwin
-	rm ${BINARY_NAME}-linux
-	rm ${BINARY_NAME}-windows
+	rm ${BINARY_NAME}
 
 test:
 	go test ./...
@@ -25,3 +23,6 @@ lint:
 
 generate:
 	go generate ./...
+
+start:
+	go run cmd/main.go
