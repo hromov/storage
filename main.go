@@ -9,7 +9,7 @@ import (
 func main() {
 	// Create new watcher.
 	watcher, err := fsnotify.NewWatcher()
-	if err != nil {
+	 err != nil {
 		log.Fatal(err)
 	}
 	defer watcher.Close()
@@ -34,7 +34,7 @@ func main() {
 			}
 		}
 	}()
-	panic("test")
+
 	// Add a path.
 	err = watcher.Add("./test")
 	if err != nil {
