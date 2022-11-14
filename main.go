@@ -40,6 +40,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	panic("exit")
 
 	// Block main goroutine forever.
 	<-make(chan struct{})

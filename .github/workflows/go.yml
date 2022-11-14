@@ -16,6 +16,9 @@ jobs:
 
       - name: Build
         run: make build
+      
+      - name: Lint
+        uses: golangci/golangci-lint-action@v3
 
       - name: Test
         run: make test
