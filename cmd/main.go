@@ -21,5 +21,5 @@ func main() {
 	handler := handlers.Init(ss)
 
 	log.Println("server started at ", cfg.Port)
-	log.Fatal(http.ListenAndServe(cfg.Port, handler))
+	log.Fatal(http.ListenAndServe(":"+cfg.Port, handler))
 }

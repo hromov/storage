@@ -12,7 +12,7 @@ type Configuration struct {
 
 var baseConfig = Configuration{
 	Environment: "local",
-	Port:        ":8080",
+	Port:        "8080",
 }
 
 func Get() Configuration {
